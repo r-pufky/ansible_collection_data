@@ -1,0 +1,181 @@
+---
+# Exceptions raised by filters are handled within ansible. Test functionality.
+
+- name: 'Default data annotation with empty dict'
+  ansible.builtin.assert:
+    quiet: true
+    that:
+      - >
+        {} | r_pufky.data.v3 ==
+        {'section': '',
+         'key': '',
+         'raw': '',
+         'data': '',
+         'nested_data': {},
+         'default': '',
+         'hint': 'str',
+         'added': '0.0.0',
+         'sensitive': false,
+         'deprecated': false,
+         'keep': true,
+         'comment': '',
+         'docstring': '',
+         'order': 0
+        }
+
+- name: 'Default data annotation with additional custom attributes (kwargs)'
+  ansible.builtin.assert:
+    quiet: true
+    that:
+      - >
+        {} | r_pufky.data.v3(_dest='/tmp', _src='/home') ==
+        {'section': '',
+         'key': '',
+         'raw': '',
+         'data': '',
+         'nested_data': {},
+         'default': '',
+         'hint': 'str',
+         'added': '0.0.0',
+         'sensitive': false,
+         'deprecated': false,
+         'keep': true,
+         'comment': '',
+         'docstring': '',
+         'order': 0,
+         '_dest': '/tmp',
+         '_src': '/home'
+        }
+
+- name: 'Nested data annotation using raw value with keep'
+  ansible.builtin.assert:
+    quiet: true
+    that:
+      - >
+        {} | r_pufky.data.v3(section='section',
+                             key='key',
+                             raw='test',
+                             nested_data=true) ==
+        {'section': 'section',
+         'key': 'key',
+         'raw': 'test',
+         'data': '',
+         'nested_data': {'section': {'key': 'test'}},
+         'default': '',
+         'hint': 'str',
+         'added': '0.0.0',
+         'sensitive': false,
+         'deprecated': false,
+         'keep': true,
+         'comment': '',
+         'docstring': '',
+         'order': 0
+        }
+
+- name: 'Nested data annotation using raw and data value with keep'
+  ansible.builtin.assert:
+    quiet: true
+    that:
+      - >
+        {} | r_pufky.data.v3(section='section',
+                             key='key',
+                             raw='raw',
+                             data='data',
+                             nested_data=true) ==
+        {'section': 'section',
+         'key': 'key',
+         'raw': 'raw',
+         'data': 'data',
+         'nested_data': {'section': {'key': 'data'}},
+         'default': '',
+         'hint': 'str',
+         'added': '0.0.0',
+         'sensitive': false,
+         'deprecated': false,
+         'keep': true,
+         'comment': '',
+         'docstring': '',
+         'order': 0
+        }
+
+- name: 'Nested data annotation using raw = default with no keep'
+  ansible.builtin.assert:
+    quiet: true
+    that:
+      - >
+        {} | r_pufky.data.v3(section='section',
+                             key='key',
+                             raw='default',
+                             default='default',
+                             nested_data=true,
+                             keep=false) ==
+        {'section': 'section',
+         'key': 'key',
+         'raw': 'default',
+         'data': '',
+         'nested_data': {},
+         'default': 'default',
+         'hint': 'str',
+         'added': '0.0.0',
+         'sensitive': false,
+         'deprecated': false,
+         'keep': false,
+         'comment': '',
+         'docstring': '',
+         'order': 0
+        }
+
+- name: 'Nested data annotation using raw != default with no keep'
+  ansible.builtin.assert:
+    quiet: true
+    that:
+      - >
+        {} | r_pufky.data.v3(section='section',
+                             key='key',
+                             raw='raw',
+                             default='default',
+                             nested_data=true,
+                             keep=false) ==
+        {'section': 'section',
+         'key': 'key',
+         'raw': 'raw',
+         'data': '',
+         'nested_data': {'section': {'key': 'raw'}},
+         'default': 'default',
+         'hint': 'str',
+         'added': '0.0.0',
+         'sensitive': false,
+         'deprecated': false,
+         'keep': false,
+         'comment': '',
+         'docstring': '',
+         'order': 0
+        }
+
+- name: 'Nested data annotation using data, raw != default with no keep'
+  ansible.builtin.assert:
+    quiet: true
+    that:
+      - >
+        {} | r_pufky.data.v3(section='section',
+                             key='key',
+                             raw='raw',
+                             data='data',
+                             default='default',
+                             nested_data=true,
+                             keep=false) ==
+        {'section': 'section',
+         'key': 'key',
+         'raw': 'raw',
+         'data': 'data',
+         'nested_data': {'section': {'key': 'data'}},
+         'default': 'default',
+         'hint': 'str',
+         'added': '0.0.0',
+         'sensitive': false,
+         'deprecated': false,
+         'keep': false,
+         'comment': '',
+         'docstring': '',
+         'order': 0
+        }

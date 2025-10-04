@@ -1,0 +1,20 @@
+---
+# Exceptions raised by filters are handled within ansible. Test functionality.
+
+- name: 'Nested dict created from dotted string'
+  ansible.builtin.assert:
+    quiet: true
+    that:
+      - >
+        'test.dotted.string' | r_pufky.data.dotted2dict(data='test') ==
+        {'test': {'dotted': {'string': 'test'}}}
+      - >
+        'test.dotted.string' | r_pufky.data.dotted2dict(data=2) ==
+        {'test': {'dotted': {'string': 2}}}
+
+- name: 'Single layer dict created from string with no dots'
+  ansible.builtin.assert:
+    quiet: true
+    that: >
+      'testdottedstring' | r_pufky.data.dotted2dict(data='test') ==
+      {'testdottedstring': 'test'}

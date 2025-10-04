@@ -1,0 +1,35 @@
+---
+DOCUMENTATION:
+  name: 'dotted2dict'
+  author: 'r_pufky'
+  version_added: '2.18.0'
+  short_description: 'Convert dotted string to nested dictionary.'
+  positional: _input, data, default, keep
+  description:
+    - Transforms dotted strings to nested dictionary, setting the leaf with
+      the provided data.
+    - Useful for converted dotted dictionary notation to dictionaries for
+      configuration.
+  options:
+    _input:
+      description:
+        - 'Dotted string ("string.using.dotted.dict.notation")'
+      type: str
+      required: true
+    data:
+      description: 'Data to set on leaf node.'
+      type: Any
+      default: ''
+
+EXAMPLES: |
+  # Create a nested dictionary.
+  # my_dict: {'section': {'subelement': {'subkey': {'key': 'value'}}}}
+  my_dict: '{{
+      "section.subelement.subkey.key" |
+      r_pufky.data.dotted2dict(data="value")
+    }}'
+
+RETURN:
+  _value:
+    description: 'Nested dictionary containing specified data.'
+    type: dict

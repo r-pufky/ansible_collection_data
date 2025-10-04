@@ -1,0 +1,166 @@
+---
+DOCUMENTATION:
+  name: 'v3'
+  author: 'r_pufky'
+  version_added: '2.18.0'
+  short_description: 'Create Data annotation V3.'
+  positional: >
+    _input, section, key, raw, data, default, hint, added, sensitive,
+    deprecated, keep, comment, docstring, order
+  description:
+    - 'Creates dict containing data annotation V3 attribute defaults.'
+    - 'Provide high-resolution, data-centric processing for roles.'
+    - >
+      Data annotations are data-centric dictionaries to reduce role
+      implementation complexity through standardized format, context around
+      data use, input sanitization, and address many of the shortcomings of
+      argument spec.
+  options:
+    _input:
+      description: 'Data annotation to modify.'
+      type: dict
+      required: true
+    section:
+      description: 'Config file section header.'
+      type: str
+      default: ''
+    key:
+      description: 'Config file section key.'
+      type: str
+      default: ''
+    raw:
+      description: 'Raw user-provided data value.'
+      type: any
+      default: ''
+    data:
+      description: 'Processed user-provided data value.'
+      type: any
+      default: ''
+    nested_data:
+      description:
+        - >
+          Create a nested dictionary using annotated data with dotted2dict
+          stored in returned dict.nested_data.
+        - '"data" used for value if both "raw" and "data" are defined.'
+        - '"keep=true" always constructs dict even with default values.'
+        - '"keep=false" constructs dict when "raw" != "default" value.'
+        - 'Otherwise returns empty dict. Default: False.'
+      type: bool
+      default: false
+    default:
+      description: 'Role default value (for testing changed values).'
+      type: any
+      default: ''
+    hint:
+      description: 'Internal type hint for sane jinja2 templating.'
+      type: str
+      default: 'str'
+    added:
+      description:
+        - 'Version data was added to consumer service.'
+        - 'Special Case: 0.0.0 - Unknown or since role inception.'
+      type: str
+      default: '0.0.0'
+    sensitive:
+      description: 'Data is considered PII/SPII as should be redacted.'
+      type: bool
+      default: false
+    deprecated:
+      description: 'Data is deprecated in consumer service.'
+      type: bool
+      default: false
+    keep:
+      description: 'Flag data to preserve even if default value.'
+      type: bool
+      default: true
+    comment:
+      description: 'Internal use free-form comment string.'
+      type: str
+      default: ''
+    docstring:
+      description: 'User visible documentation.'
+      type: str
+      default: ''
+    order:
+      description: 'Sorting order.'
+      type: int
+      default: 0
+    kwargs:
+      decription:
+        - 'Additional data annotation attributes to add.'
+        - 'Special Case: must be prepended with "_"'
+        - 'e.g. v2(... _dest="/tmp")'
+      type: any
+      default: none
+
+EXAMPLES: |
+  # Create a simple variable data annotation.
+  # data:
+  #   added: "0.0.0"
+  #   comment: ""
+  #   data: "/etc/my_role/config.file"
+  #   default: "/etc/my_role/config.file"
+  #   deprecated: false
+  #   docstring: ""
+  #   hint: "str"
+  #   keep: true
+  #   key: "config_file"
+  #   order: 0
+  #   raw: "/etc/my_role/config.file/"
+  #   section: "general"
+  #   sensitive: false
+  my_role_config: '/etc/my_role/config.file/'
+  data: "{{ {} | r_pufky.data.v2(
+      section='general',
+      key='config_file',
+      raw=my_role_config,
+      data=(my_role_config | regex_replace('\\/$', '')),
+      default='/etc/my_role/config.file'
+    )
+  }}"
+
+  # Create a list of string variable data annotation.
+  # data:
+  #   added: '8.5'
+  #   comment: 'list of options.'
+  #   data: 'one,two,three'
+  #   nested_data:
+  #     general:
+  #       list_of_options: 'one,two,three'
+  #   default: ['one', 'two']
+  #   deprecated: false
+  #   docstring: 'List of configuration options. Type list of str.'
+  #   hint: 'list of str'
+  #   keep: false,
+  #   key: 'list_of_options'
+  #   order: 1,
+  #   raw: ['one', 'two', 'three']
+  #   section: 'general'
+  #   sensitive: true,
+  #   _dest: '/tmp',
+  #   _uid: 'role_user'
+  my_role_config:  ['one', 'two', 'three']
+  data: "{{ {} | r_pufky.data.v2(
+        section='general',
+        key='list_of_options',
+        raw=my_role_config,
+        data=(my_role_config | join(',')),
+        nested_data=true,
+        default=['one', 'two'],
+        added='8.5',
+        comment='list of options.',
+        deprecated=false,
+        docstring='List of configuration options. Type list of str.',
+        hint='list of str',
+        keep=false,
+        order=1,
+        sensitive=true,
+        _dest: '/tmp',
+        _uid: 'role_user'
+      )
+    }}"
+
+RETURN:
+  _value:
+    description: Dict containing annotated data.
+    type: dict

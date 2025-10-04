@@ -1,0 +1,33 @@
+---
+namespace: 'r_pufky'
+name: 'data'
+version: '3.0.0'
+readme: 'README.md'
+authors:
+  - 'Robert Pufky <rpufky@gmail.com> (https://github.com/r-pufky)'
+description: >
+  Data annotations. Provide high-resolution, data-centric processing for roles.
+
+  Data annotations are data-centric dictionaries to reduce role implementation
+  complexity through standardized format, context around data use, input
+  sanitization, and address many of the shortcomings of argument spec.
+license_file: 'LICENSE'
+tags:
+  - 'data'
+  - 'annotation'
+  - 'tools'
+dependencies: {}
+
+repository: 'https://github.com/r-pufky/ansible_collection_data'
+documentation:
+  'https://github.com/r-pufky/ansible_colection_data/docs/README.md'
+homepage: 'https://github.com/r-pufky/ansible_collection_data'
+issues: 'https://github.com/r-pufky/ansible_collection_data/issues'
+
+build_ignore:
+  - '*molecule/*'  # Do not include molecule testing in release.
+  - 'ansible.env'  # Development ansible environment.
+  - '.ansible'  # Ansible collection cache for role testing.
+  - '.vscode'  # VSCodium settings.
+  - 'TODO.md'  # Development staging todo messages.
+  - 'COMMIT.md'  # Development staging commit messages.
