@@ -81,14 +81,14 @@ class FilterModule():
                 should be prefixed with '_'.
 
         Returns:
-            dict: Data annotation V2 dict with defaults created.
+            dict: Data annotation V3 dict with defaults created.
         '''
         result = annotation
         if (kwargs is not None and not all(key.startswith('_') for key in kwargs)):
             raise AnsibleFilterError(
-                'r_pufky.data.v2: additional data annotations require keys '
+                'r_pufky.data.v3: additional data annotations require keys '
                 'prefixed with _.\n\n'
-                'e.g. r_pufky.data.v2(..., _dest="/tmp")\n\n'
+                'e.g. r_pufky.data.v3(..., _dest="/tmp")\n\n'
                 f'Received kwargs: {kwargs.keys()}'
             )
         result.update(kwargs)
