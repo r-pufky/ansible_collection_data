@@ -1,16 +1,13 @@
 ---
 namespace: 'r_pufky'
 name: 'data'
-version: '3.0.1'
+version: '3.0.2'
 readme: 'README.md'
 authors:
   - 'Robert Pufky <rpufky@gmail.com> (https://github.com/r-pufky)'
 description: >
-  Data annotations. Provide high-resolution, data-centric processing for roles.
-
-  Data annotations are data-centric dictionaries to reduce role implementation
-  complexity through standardized format, context around data use, input
-  sanitization, and address many of the shortcomings of argument spec.
+  Data annotations. Provide high-resolution, data-centric processing for roles
+  addressing many of the shortcomings of argument spec.
 license_file: 'LICENSE'
 tags:
   - 'data'

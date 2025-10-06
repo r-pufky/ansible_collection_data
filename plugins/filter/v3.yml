@@ -4,9 +4,7 @@ DOCUMENTATION:
   author: 'r_pufky'
   version_added: '2.18.0'
   short_description: 'Create Data annotation V3.'
-  positional: >
-    _input, section, key, raw, data, default, hint, added, sensitive,
-    deprecated, keep, comment, docstring, order
+  positional: _input
   description:
     - 'Creates dict containing data annotation V3 attribute defaults.'
     - 'Provide high-resolution, data-centric processing for roles.'
@@ -62,7 +60,7 @@ DOCUMENTATION:
       type: str
       default: '0.0.0'
     sensitive:
-      description: 'Data is considered PII/SPII as should be redacted.'
+      description: 'Data is considered PII/SPII and should be redacted.'
       type: bool
       default: false
     deprecated:
@@ -86,7 +84,7 @@ DOCUMENTATION:
       type: int
       default: 0
     kwargs:
-      decription:
+      description:
         - 'Additional data annotation attributes to add.'
         - 'Special Case: must be prepended with "_"'
         - 'e.g. v2(... _dest="/tmp")'
@@ -94,7 +92,18 @@ DOCUMENTATION:
       default: none
 
 EXAMPLES: |
-  # Create a simple variable data annotation.
+  # Create simple variable data annotation.
+
+  my_role_config: '/etc/my_role/config.file/'
+  data: "{{ {} | r_pufky.data.v2(
+      section='general',
+      key='config_file',
+      raw=my_role_config,
+      data=(my_role_config | regex_replace('\\/$', '')),
+      default='/etc/my_role/config.file'
+    )
+  }}"
+
   # data:
   #   added: "0.0.0"
   #   comment: ""
@@ -109,36 +118,8 @@ EXAMPLES: |
   #   raw: "/etc/my_role/config.file/"
   #   section: "general"
   #   sensitive: false
-  my_role_config: '/etc/my_role/config.file/'
-  data: "{{ {} | r_pufky.data.v2(
-      section='general',
-      key='config_file',
-      raw=my_role_config,
-      data=(my_role_config | regex_replace('\\/$', '')),
-      default='/etc/my_role/config.file'
-    )
-  }}"
 
   # Create a list of string variable data annotation.
-  # data:
-  #   added: '8.5'
-  #   comment: 'list of options.'
-  #   data: 'one,two,three'
-  #   nested_data:
-  #     general:
-  #       list_of_options: 'one,two,three'
-  #   default: ['one', 'two']
-  #   deprecated: false
-  #   docstring: 'List of configuration options. Type list of str.'
-  #   hint: 'list of str'
-  #   keep: false,
-  #   key: 'list_of_options'
-  #   order: 1,
-  #   raw: ['one', 'two', 'three']
-  #   section: 'general'
-  #   sensitive: true,
-  #   _dest: '/tmp',
-  #   _uid: 'role_user'
   my_role_config:  ['one', 'two', 'three']
   data: "{{ {} | r_pufky.data.v2(
         section='general',
@@ -159,6 +140,26 @@ EXAMPLES: |
         _uid: 'role_user'
       )
     }}"
+
+  # data:
+  #   added: '8.5'
+  #   comment: 'list of options.'
+  #   data: 'one,two,three'
+  #   nested_data:
+  #     general:
+  #       list_of_options: 'one,two,three'
+  #   default: ['one', 'two']
+  #   deprecated: false
+  #   docstring: 'List of configuration options. Type list of str.'
+  #   hint: 'list of str'
+  #   keep: false,
+  #   key: 'list_of_options'
+  #   order: 1,
+  #   raw: ['one', 'two', 'three']
+  #   section: 'general'
+  #   sensitive: true,
+  #   _dest: '/tmp',
+  #   _uid: 'role_user'
 
 RETURN:
   _value:

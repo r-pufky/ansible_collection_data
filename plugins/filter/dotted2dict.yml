@@ -4,7 +4,7 @@ DOCUMENTATION:
   author: 'r_pufky'
   version_added: '2.18.0'
   short_description: 'Convert dotted string to nested dictionary.'
-  positional: _input, data, default, keep
+  positional: _input
   description:
     - Transforms dotted strings to nested dictionary, setting the leaf with
       the provided data.
@@ -23,11 +23,13 @@ DOCUMENTATION:
 
 EXAMPLES: |
   # Create a nested dictionary.
-  # my_dict: {'section': {'subelement': {'subkey': {'key': 'value'}}}}
+
   my_dict: '{{
       "section.subelement.subkey.key" |
       r_pufky.data.dotted2dict(data="value")
     }}'
+
+  # my_dict: {'section': {'subelement': {'subkey': {'key': 'value'}}}}
 
 RETURN:
   _value:

@@ -1,6 +1,33 @@
 ---
 # https://github.com/ansible-community/antsibull-changelog/blob/main/docs/changelog.yaml-format.md
 releases:
+  3.0.2:
+    release_date: '2025-10-06'
+    codename: 'media'
+    changes:
+      release_summary: 'Cleanup galaxy documentation formatting.'
+      major_changes:
+        - 'N/A'
+      minor_changes:
+        - 'Galaxy specific formatting cleaned up.'
+      breaking_changes:
+        - 'N/A'
+      deprecated_features:
+        - 'N/A'
+      removed_features:
+        - 'N/A'
+      security_fixes:
+        - 'N/A'
+      bugfixes:
+        - 'N/A'
+    plugins:
+      filter:
+        - name: 'v3'
+          description: 'Data annotations V3.'
+          namespace: null
+        - name: 'dotted2dict'
+          description: 'Convert dotted string to nested dictionary.'
+          namespace: null
   3.0.1:
     release_date: '2025-10-05'
     codename: 'media'
