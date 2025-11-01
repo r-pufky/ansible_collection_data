@@ -1,7 +1,7 @@
 ---
 namespace: 'r_pufky'
 name: 'data'
-version: '3.0.3'
+version: '3.0.4'
 readme: 'README.md'
 authors:
   - 'Robert Pufky <rpufky@gmail.com> (https://github.com/r-pufky)'
@@ -16,8 +16,7 @@ tags:
 dependencies: {}
 
 repository: 'https://github.com/r-pufky/ansible_collection_data'
-documentation:
-  'https://github.com/r-pufky/ansible_colection_data/docs/README.md'
+documentation: 'https://github.com/r-pufky/ansible_collection_data/docs'
 homepage: 'https://github.com/r-pufky/ansible_collection_data'
 issues: 'https://github.com/r-pufky/ansible_collection_data/issues'
 
@@ -28,4 +27,4 @@ build_ignore:
   - '.vscode'  # VSCodium settings.
   - 'TODO.md'  # Development staging todo messages.
   - 'COMMIT.md'  # Development staging commit messages.
-  - 'docs/*'  # Development docs are a separate repo and not end user.
+  - '*docs/*'  # Development docs are a separate repo and not end user.
