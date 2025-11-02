@@ -1,7 +1,7 @@
 ---
 namespace: 'r_pufky'
 name: 'data'
-version: '3.0.4'
+version: '3.0.5'
 readme: 'README.md'
 authors:
   - 'Robert Pufky <rpufky@gmail.com> (https://github.com/r-pufky)'
