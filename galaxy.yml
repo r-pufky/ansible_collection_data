@@ -16,7 +16,7 @@ tags:
 dependencies: {}
 
 repository: 'https://github.com/r-pufky/ansible_collection_data'
-documentation: 'https://github.com/r-pufky/ansible_collection_data/docs'
+documentation: 'https://r-pufky.github.io/ansible_collection_docs'
 homepage: 'https://github.com/r-pufky/ansible_collection_data'
 issues: 'https://github.com/r-pufky/ansible_collection_data/issues'
 

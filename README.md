@@ -5,7 +5,7 @@ Data annotations are data-centric dictionaries to reduce role implementation
 complexity through standardized format, context around data use, input
 sanitization, and address many of the shortcomings of argument spec.
 
-See [Documentation](https://github.com/r-pufky/ansible_collection_docs) for
+See [Documentation](https://r-pufky.github.io/ansible_collection_docs) for
 development setup, requirements, and submission practices. See Individual role
 documentation for usage.
 
@@ -50,7 +50,7 @@ Previous OS releases:
 * **[3.x.x](https://github.com/r-pufky/ansible_collection_data)**: V3.
 
 ## Development
-See [Documentation](https://github.com/r-pufky/ansible_collection_docs) for
+See [Documentation](https://r-pufky.github.io/ansible_collection_docs) for
 development setup, requirements, and submission practices.
 
 Configure [environment](https://github.com/r-pufky/ansible_collection_data/blob/main/docs/dev/environment/README.md)
