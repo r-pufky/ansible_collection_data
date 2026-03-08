@@ -1,0 +1,3 @@
+[submodule "roles/test"]
+	path = roles/test
+	url = git@github.com:r-pufky/ansible_test

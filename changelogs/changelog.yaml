@@ -1,6 +1,41 @@
 ---
-# https://github.com/ansible-community/antsibull-changelog/blob/main/docs/changelog.yaml-format.md
 releases:
+  3.1.0:
+    release_date: '2026-03-07'
+    codename: '2026-03-07'
+    changes:
+      release_summary: 'Add r_pufky.data.test.'
+      major_changes:
+        - 'Add r_pufky.data.test.'
+      minor_changes:
+        - 'Cleanup gitignore.'
+        - 'Cleanup ansible.env to be purely environment variables.'
+        - 'Update READEME.md layout.'
+        - 'Add direnv environment autoconfiguration.'
+        - 'Opmitize build tarballs.'
+      breaking_changes:
+        - 'N/A'
+      deprecated_features:
+        - 'N/A'
+      removed_features:
+        - 'N/A'
+      security_fixes:
+        - 'N/A'
+      bugfixes:
+        - 'N/A'
+    objects:
+      role:
+        - name: 'test'
+          description: 'Ansible testing middleware.'
+          namespace: null
+    plugins:
+      filter:
+        - name: 'v3'
+          description: 'Data annotations V3.'
+          namespace: null
+        - name: 'dotted2dict'
+          description: 'Convert dotted string to nested dictionary.'
+          namespace: null
   3.0.5:
     release_date: '2025-11-01'
     codename: '2025-11-01'
