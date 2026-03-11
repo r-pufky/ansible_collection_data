@@ -6,3 +6,5 @@ r_pufky-*.tar.gz
 molecule/cache
 COMMIT.md
 TODO.md
+# Auto venv
+.venv/
