@@ -1,18 +1,21 @@
 ---
+ancestor: 3.1.0
 releases:
-  3.1.0:
-    release_date: '2026-03-07'
-    codename: '2026-03-07'
+  3.2.0:
+    release_date: '2026-03-13'
+    codename: '2026-03-13'
     changes:
-      release_summary: 'Add r_pufky.data.test.'
+      release_summary: 'Ansible 2.20 migration.'
       major_changes:
-        - 'Add r_pufky.data.test.'
+        - 'Ansible 2.20 migration.'
+        - 'roles/test - 4.0.2.'
+        - >
+          Dev: Backend environment updated and auto-configured resolving
+          Molecule 25.1.0+ breakage (#301, #4380).
       minor_changes:
-        - 'Cleanup gitignore.'
-        - 'Cleanup ansible.env to be purely environment variables.'
-        - 'Update READEME.md layout.'
-        - 'Add direnv environment autoconfiguration.'
-        - 'Opmitize build tarballs.'
+        - 'Modernize README.md and role documentation.'
+        - 'changelog.yaml - truncate and set ancestor for old releases.'
+        - 'ansible.env - Add libvirt system URI to bring in.'
       breaking_changes:
         - 'N/A'
       deprecated_features:
@@ -28,170 +31,6 @@ releases:
         - name: 'test'
           description: 'Ansible testing middleware.'
           namespace: null
-    plugins:
-      filter:
-        - name: 'v3'
-          description: 'Data annotations V3.'
-          namespace: null
-        - name: 'dotted2dict'
-          description: 'Convert dotted string to nested dictionary.'
-          namespace: null
-  3.0.5:
-    release_date: '2025-11-01'
-    codename: '2025-11-01'
-    changes:
-      release_summary: 'Update README.md.'
-      major_changes:
-        - 'N/A'
-      minor_changes:
-        - 'README.md - Format updated and standardized across all collections.'
-      breaking_changes:
-        - 'N/A'
-      deprecated_features:
-        - 'N/A'
-      removed_features:
-        - 'N/A'
-      security_fixes:
-        - 'N/A'
-      bugfixes:
-        - 'N/A'
-    plugins:
-      filter:
-        - name: 'v3'
-          description: 'Data annotations V3.'
-          namespace: null
-        - name: 'dotted2dict'
-          description: 'Convert dotted string to nested dictionary.'
-          namespace: null
-  3.0.4:
-    release_date: '2025-11-01'
-    codename: '2025-11-01'
-    changes:
-      release_summary: 'Update documentation.'
-      major_changes:
-        - 'N/A'
-      minor_changes:
-        - 'docs/* - Use link in README.md for latest collection documentation.'
-      breaking_changes:
-        - 'N/A'
-      deprecated_features:
-        - 'N/A'
-      removed_features:
-        - 'N/A'
-      security_fixes:
-        - 'N/A'
-      bugfixes:
-        - 'N/A'
-    plugins:
-      filter:
-        - name: 'v3'
-          description: 'Data annotations V3.'
-          namespace: null
-        - name: 'dotted2dict'
-          description: 'Convert dotted string to nested dictionary.'
-          namespace: null
-  3.0.3:
-    release_date: '2025-10-12'
-    codename: '2025-10-12'
-    changes:
-      release_summary: 'Update collection documentation.'
-      major_changes:
-        - 'N/A'
-      minor_changes:
-        - 'docs/ to 13.0.0.'
-      breaking_changes:
-        - 'N/A'
-      deprecated_features:
-        - 'N/A'
-      removed_features:
-        - 'N/A'
-      security_fixes:
-        - 'N/A'
-      bugfixes:
-        - 'N/A'
-    plugins:
-      filter:
-        - name: 'v3'
-          description: 'Data annotations V3.'
-          namespace: null
-        - name: 'dotted2dict'
-          description: 'Convert dotted string to nested dictionary.'
-          namespace: null
-  3.0.2:
-    release_date: '2025-10-06'
-    codename: '2025-10-06'
-    changes:
-      release_summary: 'Cleanup galaxy documentation formatting.'
-      major_changes:
-        - 'N/A'
-      minor_changes:
-        - 'Galaxy specific formatting cleaned up.'
-      breaking_changes:
-        - 'N/A'
-      deprecated_features:
-        - 'N/A'
-      removed_features:
-        - 'N/A'
-      security_fixes:
-        - 'N/A'
-      bugfixes:
-        - 'N/A'
-    plugins:
-      filter:
-        - name: 'v3'
-          description: 'Data annotations V3.'
-          namespace: null
-        - name: 'dotted2dict'
-          description: 'Convert dotted string to nested dictionary.'
-          namespace: null
-  3.0.1:
-    release_date: '2025-10-05'
-    codename: '2025-10-05'
-    changes:
-      release_summary: 'Update docstrings.'
-      major_changes:
-        - 'N/A'
-      minor_changes:
-        - 'Remove development docs from release packaging.'
-        - 'Update internal docstrings.'
-      breaking_changes:
-        - 'N/A'
-      deprecated_features:
-        - 'N/A'
-      removed_features:
-        - 'N/A'
-      security_fixes:
-        - 'N/A'
-      bugfixes:
-        - 'N/A'
-    plugins:
-      filter:
-        - name: 'v3'
-          description: 'Data annotations V3.'
-          namespace: null
-        - name: 'dotted2dict'
-          description: 'Convert dotted string to nested dictionary.'
-          namespace: null
-  3.0.0:
-    release_date: '2025-10-04'
-    codename: '2025-10-04'
-    changes:
-      release_summary: 'Data annotation V3 filter release.'
-      major_changes:
-        - 'Added r_pufky.data.v3 filter.'
-        - 'Added r_pufky.data.dotted2dict filter.'
-      minor_changes:
-        - 'N/A'
-      breaking_changes:
-        - 'N/A'
-      deprecated_features:
-        - 'N/A'
-      removed_features:
-        - 'N/A'
-      security_fixes:
-        - 'N/A'
-      bugfixes:
-        - 'N/A'
     plugins:
       filter:
         - name: 'v3'
