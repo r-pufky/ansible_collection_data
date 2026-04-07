@@ -1,6 +1,38 @@
 ---
 ancestor: 3.1.0
 releases:
+  3.2.1:
+    release_date: '2026-04-07'
+    codename: '2026-04-07'
+    changes:
+      release_summary: 'Fix cache_git string truncation.'
+      major_changes:
+        - 'N/A'
+      minor_changes:
+        - 'N/A'
+      breaking_changes:
+        - 'N/A'
+      deprecated_features:
+        - 'N/A'
+      removed_features:
+        - 'N/A'
+      security_fixes:
+        - 'N/A'
+      bugfixes:
+        - 'roles/test - cache_git string truncation fix.'
+    objects:
+      role:
+        - name: 'test'
+          description: 'Ansible testing middleware.'
+          namespace: null
+    plugins:
+      filter:
+        - name: 'v3'
+          description: 'Data annotations V3.'
+          namespace: null
+        - name: 'dotted2dict'
+          description: 'Convert dotted string to nested dictionary.'
+          namespace: null
   3.2.0:
     release_date: '2026-03-13'
     codename: '2026-03-13'
