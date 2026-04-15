@@ -1,6 +1,38 @@
 ---
 ancestor: 3.1.0
 releases:
+  3.2.2:
+    release_date: '2026-04-15'
+    codename: '2026-04-15'
+    changes:
+      release_summary: 'Update glyphs, links.'
+      major_changes:
+        - 'N/A'
+      minor_changes:
+        - 'Documentation glyphs and links updates.'
+      breaking_changes:
+        - 'N/A'
+      deprecated_features:
+        - 'N/A'
+      removed_features:
+        - 'N/A'
+      security_fixes:
+        - 'N/A'
+      bugfixes:
+        - 'N/A'
+    objects:
+      role:
+        - name: 'test'
+          description: 'Ansible testing middleware.'
+          namespace: null
+    plugins:
+      filter:
+        - name: 'v3'
+          description: 'Data annotations V3.'
+          namespace: null
+        - name: 'dotted2dict'
+          description: 'Convert dotted string to nested dictionary.'
+          namespace: null
   3.2.1:
     release_date: '2026-04-07'
     codename: '2026-04-07'
